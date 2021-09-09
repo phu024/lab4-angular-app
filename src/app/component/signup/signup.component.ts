@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms'
+import { FormArray, FormControl, FormGroup } from '@angular/forms'
 
 @Component({
   selector: 'app-signup',
@@ -19,14 +19,25 @@ export class SignupComponent implements OnInit {
       city: new FormControl(''),
       state: new FormControl(''),
       zip: new FormControl(''),
-    })
-  })
+    }),
+    aliases: new FormArray([
+      new FormControl(''),
+    ])
+  });
+
+  get aliases(){
+    return this.profileForm.get('aliases') as FormArray;
+  }
 
 
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  addAlias(){
+    this.aliases.push(new FormControl(''));
   }
 
 }

@@ -25,24 +25,26 @@
                         <div class="form-group">
                             <label>LastName</label>
                             <input type="text" class="form-control" formControlName="lastName">
-                        </div><br/>
+                        </div><br />
                         <div class="form-check form-check-inline">
                             <label class="form-check-lable">
-                                <input class="form-check-input" type="radio" name="sex" value="Male" formControlName='sex'>Male
+                                <input class="form-check-input" type="radio" name="sex" value="Male"
+                                    formControlName='sex'>Male
                             </label>
                         </div>
                         <div class="form-check form-check-inline">
                             <label class="form-check-lable">
-                                <input class="form-check-input" type="radio" name="sex" value="Female" formControlName='sex'>Female
+                                <input class="form-check-input" type="radio" name="sex" value="Female"
+                                    formControlName='sex'>Female
                             </label>
                         </div>
-                        <br/><br/>
+                        <br /><br />
 
                         <div class="form-group">
                             <label>Email</label>
                             <input type="email" class="form-control" formContorlName='email'>
                         </div>
-                        <br/><br/>
+                        <br /><br />
                         <div formGroupName="address">
                             <h4>Address</h4>
                             <div class="form-group">
@@ -61,8 +63,19 @@
                                 <label>Zip</label>
                                 <input type="text" class="form-control" formControlName='zip'>
                             </div>
+                        </div><br/><br/>
+
+                        <div formArrayName="aliases">
+                            <h4>Aliases</h4>
+                            <button class="btn btn-success" (click)="addAlias()">Add Alias</button>
+                            <div>
+                                <div class="form-group" *ngFor="let alias of aliases.controls; let i=index">
+                                    <label>Alias: {{i}}</label><br/>
+                                    <input type="text" class="form-contor" [formControlName]="i">
+                                </div>
+                            </div>
                         </div>
-                        <br/><br/>
+                        <br /><br />
                         <button type="submit" class="btn btn-primary">Submit</button>&nbsp;
                         <button type="reset" class="btn btn-danger">Reset</button>
                     </form>
@@ -81,4 +94,4 @@
             </div>
         </div>
     </div>
-</div>>
+    </div>>
